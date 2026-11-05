@@ -1170,6 +1170,7 @@ var _pa = document.querySelector("img[data-avatar-copy]"); if (_pa && AVATAR_SRC
         flushBot();
         inputEl.value=""; sendEl.disabled=true;
         var lower = text.toLowerCase();
+        var isQ = text.indexOf("?")>-1 || /^(comment|combien|quel|quelle|quand|pourquoi|est-ce|où|qui|avez-vous|as-tu|c'est quoi|qu'est|ça veut dire|ca veut dire)/i.test(lower);
 
         if(step==="description"){
           userSay(text);
@@ -1215,6 +1216,12 @@ draft.phone=text; step="email"; botSay("Ton courriel ?"); return;
           if(lower.indexOf("semaine")>-1){ chooseVisit(VISIT_OPTIONS[0]); return; }
           if(lower.indexOf("convenir")>-1||lower.indexOf("avec shawn")>-1||lower.indexOf("appelle")>-1){ chooseVisit(VISIT_OPTIONS[2]); return; }
         }
+        if(!isQ && step==="project"){
+          for(var pj=0;pj<PROJECT_OPTIONS.length;pj++){ if(lower.indexOf(PROJECT_OPTIONS[pj].toLowerCase().slice(0,6))>-1){ chooseProject(PROJECT_OPTIONS[pj]); return; } }
+        }
+        if(!isQ && step==="timeline"){
+          for(var tk=0;tk<TIMELINE_OPTIONS.length;tk++){ if(lower.indexOf(TIMELINE_OPTIONS[tk].toLowerCase().slice(0,6))>-1){ chooseTimeline(TIMELINE_OPTIONS[tk]); return; } }
+        }
         var answer = factualAnswer(text);
         if(answer){
           userSay(text); rememberChat("user", text); rememberChat("assistant", answer); botSay(answer);
@@ -1241,13 +1248,6 @@ draft.phone=text; step="email"; botSay("Ton courriel ?"); return;
           }
           if(match){ chooseTerrain(match.street); return; }
         }
-        if(step==="project"){
-          for(var j=0;j<PROJECT_OPTIONS.length;j++){ if(lower.indexOf(PROJECT_OPTIONS[j].toLowerCase().slice(0,6))>-1){ chooseProject(PROJECT_OPTIONS[j]); return; } }
-        }
-        if(step==="timeline"){
-          for(var k=0;k<TIMELINE_OPTIONS.length;k++){ if(lower.indexOf(TIMELINE_OPTIONS[k].toLowerCase().slice(0,6))>-1){ chooseTimeline(TIMELINE_OPTIONS[k]); return; } }
-        }
-        var isQ = text.indexOf("?")>-1 || /^(comment|combien|quel|quelle|quand|pourquoi|est-ce|où|qui|avez-vous|as-tu)/i.test(lower);
         if(!isQ && step==="project" && text.length>=3){ userSay(text); draft.projectType=text; step="timeline"; botSay("Et ton délai ?"); return; }
         if(!isQ && step==="timeline" && text.length>=3){ userSay(text); draft.timeline=text; if(!consentRecorded()){ step="consent"; renderOptions(); botSay("Avant d'envoyer : acceptes-tu les témoins de mesure (Meta) qui nous aident à améliorer nos publicités ? Tu peux refuser — ta demande partira quand même."); } else { proceedToSummary(); } return; }
         if(!isQ && step==="visite" && text.length>=3){ userSay(text); draft.visitMoment=text; askProject(); return; }
