@@ -350,6 +350,18 @@ footer .nom{color:var(--noir);font-weight:800;font-size:14.5px}
 .hero .financement{font-size:1.5em !important}
 @media(min-width:760px){.hero .photo{height:720px}.hero .contenu{padding-bottom:90px}.hero .financement{font-size:1.9em !important}}
 </style>
+<style>
+/* Agencement 3 terrains — template 3 choisi par Shawn le 5 nov. 2026 : rangées pleine largeur, photo grossie, boîte d'infos réduite (bureau seulement) */
+@media(min-width:760px){
+ .grille{grid-template-columns:1fr;gap:22px}
+ .carte{display:grid;grid-template-columns:1.35fr 1fr}
+ .carte .ph{height:auto}
+ .carte .ph.ar43{aspect-ratio:4/3}
+ .carte .ph.ar169{aspect-ratio:16/9}
+ .carte .ph img{position:absolute;inset:0;height:100%;width:100%;object-fit:cover;display:block}
+ .carte .corps{display:flex;flex-direction:column;justify-content:center}
+}
+</style>
 </head>
 <body>
 
@@ -389,7 +401,7 @@ footer .nom{color:var(--noir);font-weight:800;font-size:14.5px}
     <div class="grille">
 
       <article class="carte">
-        <div class="ph"><img src="img/chiapputo.jpg" alt="Terrain rue Chiapputo, lot 663"></div>
+        <div class="ph ar43"><img src="img/chiapputo.jpg" alt="Terrain rue Chiapputo, lot 663"></div>
         <div class="corps">
           <h3>Rue Chiapputo, lot 663</h3>
           <div class="prix">59&#160;900&#160;$</div>
@@ -403,7 +415,7 @@ footer .nom{color:var(--noir);font-weight:800;font-size:14.5px}
       </article>
 
       <article class="carte vedette">
-        <div class="ph"><img src="img/sarine.jpg" alt="Terrain rue Sarine, lot 937, accès au lac Asselin"><span class="etiquette eau">ACCÈS AU LAC</span></div>
+        <div class="ph ar169"><img src="img/sarine.jpg" alt="Terrain rue Sarine, lot 937, accès au lac Asselin"><span class="etiquette eau">ACCÈS AU LAC</span></div>
         <div class="corps">
           <h3>Rue Sarine, lot 937</h3>
           <div class="prix">74&#160;900&#160;$</div>
@@ -417,7 +429,7 @@ footer .nom{color:var(--noir);font-weight:800;font-size:14.5px}
       </article>
 
       <article class="carte">
-        <div class="ph"><img src="img/cedriere.jpg" alt="Terrain rue de la Cédrière"></div>
+        <div class="ph ar43"><img src="img/cedriere.jpg" alt="Terrain rue de la Cédrière"></div>
         <div class="corps">
           <h3>Rue de la Cédrière</h3>
           <div class="prix">99&#160;934&#160;$</div>
