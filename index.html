@@ -500,7 +500,7 @@ footer .nom{color:var(--noir);font-weight:800;font-size:14.5px}
         <button type="button" class="close" id="proactive-close" aria-label="Ignorer le message de Batiste">
           <svg width="14" height="14" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
-        <p><strong>Batiste · Signature SB</strong><br />Salut ! Moi, c'est Batiste, l'assistant de Signature SB. Tu regardes pour un terrain à Rawdon ? Il n'en reste que 3 — je peux prendre ta demande en 30 secondes.</p>
+        <p><strong>Batiste · Signature SB</strong><br />Salut ! C'est moi, Batiste. Il reste trois terrains à Rawdon — je peux prendre ta demande en 30 secondes.</p>
         <button type="button" class="btn-red" data-open-chat>Discuter avec Batiste</button>
       </div>
     </div>
@@ -1140,11 +1140,11 @@ var _pa = document.querySelector("img[data-avatar-copy]"); if (_pa && AVATAR_SRC
           draft.terrain = preset;
           step="name";
           botSay(preset==="Rue Sarine, lot 937"
-            ? "Salut ! Moi, c'est Batiste, l'assistant de Signature SB. 👋 Rue Sarine, lot 937 — accès au lac Asselin. Un seul disponible. Avant le dossier, je prends tes coordonnées. Ton nom ?"
-            : "Salut ! Moi, c'est Batiste, l'assistant de Signature SB. 👋 La "+preset+" — un seul disponible. Avant le dossier, je prends tes coordonnées. Ton nom ?");
+            ? "Salut ! C'est moi, Batiste. Rue Sarine, lot 937 — accès au lac Asselin, il en reste un seul. Donne-moi ton nom."
+            : "Salut ! C'est moi, Batiste. La "+preset+" — un seul disponible. Donne-moi ton nom.");
         } else {
           step="name";
-          botSay("Salut ! Moi, c'est Batiste, l'assistant de Signature SB. Tu regardes pour un terrain à Rawdon ? Il reste 3 terrains. Avant de choisir, je prends tes coordonnées. Ton nom ?");
+          botSay("Salut ! C'est moi, Batiste. Il reste trois terrains à Rawdon. Donne-moi ton nom.");
         }
         started=true; renderOptions(); updatePlaceholder();
       }
